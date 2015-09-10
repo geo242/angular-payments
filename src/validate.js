@@ -33,7 +33,7 @@ angular.module('angularPayments')
     return sum % 10 === 0;
   };
 
-  var _validators = {}
+  var _validators = {};
 
   _validators['cvc'] = function(cvc, ctrl, scope, attr){
       var ref, ref1;
@@ -56,7 +56,7 @@ angular.module('angularPayments')
       } else {
         return cvc.length >= 3 && cvc.length <= 4;
       }
-  }
+  };
 
   _validators['card'] = function(num, ctrl, scope, attr){
       var card, ref, typeModel;
@@ -101,7 +101,7 @@ angular.module('angularPayments')
       ret = (ref = num.length, __indexOf.call(card.length, ref) >= 0) && (card.luhn === false || _luhnCheck(num));
 
       return ret;
-  }
+  };
 
   _validators['expiry'] = function(val){
     // valid if empty - let ng-required handle empty
@@ -142,7 +142,7 @@ angular.module('angularPayments')
     expiry.setMonth(expiry.getMonth() + 1, 1);
 
     return expiry > currentTime;
-  }
+  };
 
   return function(type, val, ctrl, scope, attr){
     if(!_validators[type]){
@@ -161,7 +161,7 @@ angular.module('angularPayments')
 
 .factory('_ValidateWatch', ['_Validate', function(_Validate){
 
-    var _validatorWatches = {}
+    var _validatorWatches = {};
 
     _validatorWatches['cvc'] = function(type, ctrl, scope, attr){
         if(attr.paymentsTypeModel) {
@@ -172,7 +172,7 @@ angular.module('angularPayments')
                 }
             });
         }
-    }
+    };
 
     return function(type, ctrl, scope, attr){
         if(_validatorWatches[type]){

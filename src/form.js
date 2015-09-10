@@ -22,7 +22,7 @@ angular.module('angularPayments')
       return str.replace(/([A-Z])/g, function(m){
         return "_"+m.toLowerCase();
       });
-    }
+    };
 
     var ret = {};
 
@@ -35,7 +35,7 @@ angular.module('angularPayments')
     ret['number'] = (ret['number'] || '').replace(/ /g,'');
 
     return ret;
-  }
+  };
 
   return {
     restrict: 'A',

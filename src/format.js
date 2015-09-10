@@ -3,7 +3,7 @@ angular.module('angularPayments')
 
 .factory('_Format',['Cards', 'Common', '$filter', function(Cards, Common, $filter){
 
-  var _formats = {}
+  var _formats = {};
 
   var _hasTextSelected = function($target) {
       var ref;
@@ -169,7 +169,7 @@ angular.module('angularPayments')
 
     ctrl.$parsers.push(_parseCardNumber);
     ctrl.$formatters.push(_getFormattedCardNumber);
-  }
+  };
 
 
   // cvc
@@ -195,7 +195,7 @@ angular.module('angularPayments')
 
   _formats['cvc'] = function(elem){
     elem.bind('keypress', _formatCVC)
-  }
+  };
 
   // expiry
 
@@ -218,7 +218,7 @@ angular.module('angularPayments')
     value = value.replace(/\D/g, '');
     
     if (value.length > 6) {
-      e.preventDefault()
+      e.preventDefault();
       return;
     }
   };
@@ -311,7 +311,7 @@ angular.module('angularPayments')
   };
 
   var _parseExpiry = function(value) {
-    if(value != null) {
+    if(!!value) {
       var obj = Common.parseExpiry(value);
       var expiry = new Date(obj.year, obj.month-1);
       return $filter('date')(expiry, 'MM/yyyy');
@@ -338,7 +338,7 @@ angular.module('angularPayments')
 
     ctrl.$parsers.push(_parseExpiry);
     ctrl.$formatters.push(_getFormattedExpiry);
-  }
+  };
 
   return function(type, elem, ctrl){
     if(!_formats[type]){

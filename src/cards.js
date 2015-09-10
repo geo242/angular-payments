@@ -96,7 +96,7 @@ angular.module('angularPayments')
         }
 
       }
-  }
+  };
 
   var _fromType = function(type) {
       var card, i, len;
